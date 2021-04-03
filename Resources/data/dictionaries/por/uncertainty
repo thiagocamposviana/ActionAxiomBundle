@@ -1,0 +1,17 @@
+acaso=>acaso
+aparent(\w+)?=>aparent$1
+às vezes=>às vezes
+casual(mente)?=>casual$1
+considerad(a|o)=>considerad$1
+estim(a|o)(\w+)?=>estim$1$2
+importante(s)?=>importante$1
+pode(\w+)?=>pode$1
+provavel(\w+)?=>provavel$1
+poss(i|í)v(\w+)?=>poss$1v$2
+porventura(s)?=>porventura$1
+prev(i|í|e|ê)(\w+)?=>prev$1$2
+quem sabe=>quem sabe
+quiça=>quiça
+supost(\w+)?=>supost$1
+suspeit(\w+)?=>suspeit$1
+talvez=>talvez

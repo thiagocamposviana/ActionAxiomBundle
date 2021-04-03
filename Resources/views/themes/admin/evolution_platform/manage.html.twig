@@ -1,0 +1,41 @@
+{# See vendor/ezsystems/ezplatform-admin-ui/src/bundle/Resources/views/themes/admin/ui/layout.html.twig #}
+
+{% extends '@ezdesign/ui/layout.html.twig' %}
+
+{% block title %}{{ title|trans }}{% endblock %}
+
+{%- block breadcrumbs -%}
+    {% include '@ezdesign/ui/breadcrumbs.html.twig' with { items: [
+        { value: 'Evolution Platform Manager' }
+    ]} %}
+{%- endblock -%}
+
+{%- block stylesheets -%}
+    <!-- block for custom styles -->
+{%- endblock -%}
+
+{%- block page_title -%}
+    {# See https://doc.ezplatform.com/en/master/guidelines/resources/icons/ #}
+    {% include '@ezdesign/ui/page_title.html.twig' with {
+        title: 'url.list'|trans|desc(title),
+        icon_name: 'dashboard'
+    } %}
+{%- endblock -%}
+
+{%- block content -%}
+     <div class="row align-items-stretch ez-main-row">
+    {% block left_sidebar %}
+        {% include '@ezdesign/evolution_platform/parts/left_menu.html.twig' %}
+    {% endblock %}
+        <section class="container my-4">
+            <div class="ez-table-header">
+                <div class="ez-table-header__headline">{{ "Action List"|trans }}</div>
+            </div>
+            {{ text }}
+        </section>
+    </div>
+{%- endblock -%}
+
+{%- block javascripts -%}
+    <!-- block for custom javascript -->
+{%- endblock -%}

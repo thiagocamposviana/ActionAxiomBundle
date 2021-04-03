@@ -1,0 +1,4 @@
+([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(a|o|as|os) mais=>$1<tag>$2 mais</tag>
+([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(a|o|as|os) (menor|maior|melhor|pior)(es)?=>$1<tag>$2 $3$4</tag>
+(\w+)(érrim|íssim|ílim)(o|a|os|as)=>$1$2$3
+(mínim|máxim|ótim)(a|o|as|os)=>$1$2

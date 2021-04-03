@@ -1,0 +1,75 @@
+.ez-field-edit--ezrichtext
+{
+    .mugo_word_synonyms
+    {
+        .item
+        {
+            padding: 15px 15px 0 15px;
+            background-color: #e5e3e3;
+            .synonyms
+            {
+                background-color: #fff;
+                color: #000;
+                padding-top: 1rem;
+            }
+            .antonyms
+            {
+                background-color: #106d95;
+                color: #fff;
+                padding-top: 1rem;
+            }
+        }
+    }
+    .mugo_word_flexion_analysis
+    {
+        .singularW
+        {
+            background-color:#f9fcb3;
+        }
+        .neutralW
+        {
+            background-color:none;
+        }
+        .pluralW
+        {
+            background-color:#bfffd6;
+        }
+    }
+    .mugo_word_neutral_analysis
+    {
+        .masculineW
+        {
+            background-color:#bffcff;
+        }
+        .feminineW
+        {
+            background-color:#ffc2f4;
+        }
+        .neutralW
+        {
+            background-color:none;
+        }
+    }
+    .mugo_classifier
+    {
+        .definition
+        {
+            background-color:#bfffd6;
+        }
+        .other
+        {
+            background-color:none;
+        }
+    }
+    .mugo_action_axiom_operations
+    {
+        border: 0.0625rem solid #878b90;
+    }
+    div[class*="mugo"] .results:not(:empty)
+    {
+        padding: 15px 15px 0 15px;
+        background-color: #ECECF1;
+        border: 0.0625rem solid #878b90;
+    }
+}
+

@@ -1,0 +1,42 @@
+<script>
+    window.mugo_word_synonyms_language = "{{ language.languageCode|split('-')[0] }}";
+    window.mugo_word_synonyms_get_url = "{{ path('mugo_word_synonyms.get') }}";
+    window.mugo_word_synonyms_starting_url = "{{ path('mugo_word_synonyms.starting') }}";
+    window.mugo_word_synonyms_ending_url = "{{ path('mugo_word_synonyms.ending') }}";
+    window.mugo_word_synonyms_containing_url = "{{ path('mugo_word_synonyms.containing') }}";
+    window.mugo_mugo_classify_paragraphs_url = "{{ path('mugo_classifier.classify_paragraphs') }}";
+
+    // request the bag of words for the current language
+    // makes the variable globally acessible
+    window.mugo_word_suggestion_bag = [];
+    window.mugo_suggestion_current_text = '';
+    $(document).ready(function(){
+        if( $('.ez-richtext-tools').length > 0 )
+        {
+            $.ajax({
+                type: 'GET',
+                url: '{{ path('mugo_word_suggestion.list.json') }}/{{ language.languageCode|split('-')[0] }}',
+                dataType: "json",
+                success: function (data) {
+                    window.mugo_word_suggestion_bag = data;
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: '{{ path('mugo_data_dictionary.get') }}/{{ language.languageCode|split('-')[0] }}/uncertainty',
+                dataType: "json",
+                success: function (data) {
+                    window.mugo_data_dictionary_uncertainty = data;
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: '{{ path('mugo_data_dictionary.get') }}/{{ language.languageCode|split('-')[0] }}/superlative',
+                dataType: "json",
+                success: function (data) {
+                    window.mugo_data_dictionary_superlative = data;
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,53 @@
+parameters:
+    mugo_word_synonyms.controller.class: Mugo\ActionAxiomBundle\Controller\WordSynonymsController
+    mugo_word_suggestion.controller.class: Mugo\ActionAxiomBundle\Controller\WordSuggestionController
+    mugo_data_dictionary.controller.class: Mugo\ActionAxiomBundle\Controller\DataDictionaryController
+    mugo_classifier.controller.class: Mugo\ActionAxiomBundle\Controller\ClassifierController
+    evolution_platform.controller.class: Mugo\ActionAxiomBundle\Controller\EvolutionPlatformController
+
+services:
+    evolution_platform.controller:
+        public: true
+        class: "%evolution_platform.controller.class%"
+        parent: ezpublish.controller.base
+    mugo_evolution_platform.event_listener.menu:
+        class: Mugo\ActionAxiomBundle\EventListener\MenuListener
+        arguments:
+            - "@security.authorization_checker"
+        tags:
+            - { name: kernel.event_subscriber }
+    mugo_word_suggestion.controller:
+        public: true
+        class: "%mugo_word_suggestion.controller.class%"
+        parent: ezpublish.controller.base
+    mugo_word_synonyms.controller:
+        public: true
+        class: "%mugo_word_synonyms.controller.class%"
+        parent: ezpublish.controller.base
+    mugo_data_dictionary.controller:
+        public: true
+        class: "%mugo_data_dictionary.controller.class%"
+        parent: ezpublish.controller.base
+    mugo_classifier.controller:
+        public: true
+        class: "%mugo_classifier.controller.class%"
+        parent: ezpublish.controller.base
+    mugo_word_synonyms.components.content_edit_form_after:
+        parent: EzSystems\EzPlatformAdminUi\Component\TwigComponent
+        arguments:
+            # yes! with @@ (double)
+            $template: '@@ezdesign/mugo_word_synonyms/content_edit_form_after.html.twig'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: 'content-edit-form-after' }
+    mugo_word_synonyms.components.content_create_form_after:
+        parent: EzSystems\EzPlatformAdminUi\Component\TwigComponent
+        arguments:
+            # yes! with @@ (double)
+            $template: '@@ezdesign/mugo_word_synonyms/content_edit_form_after.html.twig'
+        tags:
+            - { name: ezplatform.admin_ui.component, group: 'content-create-form-after' }
+
+    Mugo\ActionAxiomBundle\Repository\:
+        resource: '../../Repository'
+        autowire: true
+        tags: ['doctrine.repository_service']

@@ -1,0 +1,63 @@
+mugo_word_synonyms.get:
+    path: /mugo_word_synonyms/get/{language}/{word}
+    defaults:
+        _controller: mugo_word_synonyms.controller:getAction
+        language: 'eng'
+        word: 'test'
+    options:
+        expose: true
+mugo_word_synonyms.ending:
+    path: /mugo_word_synonyms/ending/{language}/{word}
+    defaults:
+        _controller: mugo_word_synonyms.controller:endingAction
+        language: 'eng'
+        word: 'test'
+    options:
+        expose: true
+mugo_word_synonyms.starting:
+    path: /mugo_word_synonyms/starting/{language}/{word}
+    defaults:
+        _controller: mugo_word_synonyms.controller:startingAction
+        language: 'eng'
+        word: 'test'
+    options:
+        expose: true
+mugo_word_synonyms.containing:
+    path: /mugo_word_synonyms/containing/{language}/{word}
+    defaults:
+        _controller: mugo_word_synonyms.controller:containingAction
+        language: 'eng'
+        word: 'test'
+    options:
+        expose: true
+mugo_word_suggestion.list.json:
+    path: /mugo_word_suggestion/list/{language}
+    defaults:
+        _controller: mugo_word_suggestion.controller:listAction
+        language: 'eng'
+        _format: "json"
+    options:
+        expose: true
+mugo_data_dictionary.get:
+    path: /mugo_data_dictionary/get/{language}/{dictionary}
+    defaults:
+        _controller: mugo_data_dictionary.controller::getAction
+        language: 'eng'
+        dictionary: 'uncertainty'
+    options:
+        expose: true
+mugo_classifier.classify_paragraphs:
+    path: /mugo_classify_paragraphs/{classifier}/{language}/{useStemmer}
+    defaults:
+        _controller: mugo_classifier.controller::classifyParagraphsAction
+        classifier: 'svm'
+        language: 'por'
+        useStemmer: 'false'
+    options:
+        expose: true
+evolution_platform.manage:
+    path: /evolution_platform/manage
+    defaults:
+        _controller: evolution_platform.controller::manageAction
+    options:
+        expose: true

@@ -1,0 +1,2 @@
+mugo_action_axiom:
+    resource: '@MugoActionAxiomBundle/Resources/config/routing.yaml'
