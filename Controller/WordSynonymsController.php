@@ -64,10 +64,12 @@ class WordSynonymsController extends Controller
         $query = $entityManager->createQuery(
             'SELECT s
             FROM Mugo\ActionAxiomBundle\Entity\MugoWordSynonym s
-            WHERE s.word LIKE :word
+            WHERE s.word LIKE :word and s.language = :language
             GROUP BY s.word
             ORDER BY s.word ASC'
-        )->setParameter('word', "%{$word}");
+        )
+        ->setParameter('language', "{$language}")
+        ->setParameter('word', "%{$word}");
 
         $items = $query->getResult();
         $results = [];
@@ -96,10 +98,12 @@ class WordSynonymsController extends Controller
         $query = $entityManager->createQuery(
             'SELECT s
             FROM Mugo\ActionAxiomBundle\Entity\MugoWordSynonym s
-            WHERE s.word LIKE :word
+            WHERE s.word LIKE :word and s.language = :language
             GROUP BY s.word
             ORDER BY s.word ASC'
-        )->setParameter('word', "{$word}%");
+        )
+        ->setParameter('language', "{$language}")
+        ->setParameter('word', "{$word}%");
         $items = $query->getResult();
         $results = [];
         foreach( $items as $item)
@@ -127,10 +131,12 @@ class WordSynonymsController extends Controller
         $query = $entityManager->createQuery(
             'SELECT s
             FROM Mugo\ActionAxiomBundle\Entity\MugoWordSynonym s
-            WHERE s.word LIKE :word
+            WHERE s.word LIKE :word and s.language = :language
             GROUP BY s.word
             ORDER BY s.word ASC'
-        )->setParameter('word', "%{$word}%");
+        )
+        ->setParameter('language', "{$language}")
+        ->setParameter('word', "%{$word}%");
 
         $items = $query->getResult();
         $results = [];
