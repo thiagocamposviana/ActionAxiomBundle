@@ -39,12 +39,12 @@ MySQL:
 CREATE TABLE `mugo_word_synonym` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` int(11) NOT NULL,
-  `type` varchar(30) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `word` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL,
-  `language` varchar(15) COLLATE utf8mb4_unicode_520_ci NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `word` varchar(255) NOT NULL,
+  `language` varchar(15) NOT NULL,
   `antonyms_code` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=377487 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 ```
 
 Import the data:
