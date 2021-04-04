@@ -46,7 +46,20 @@ services:
             $template: '@@ezdesign/mugo_word_synonyms/content_edit_form_after.html.twig'
         tags:
             - { name: ezplatform.admin_ui.component, group: 'content-create-form-after' }
-
+    mugo_wikipedia.command.cache:
+        class: Mugo\ActionAxiomBundle\Command\WikipediaCacheCommand
+        arguments:
+            - '@ezpublish.api.repository'
+            - '@service_container'
+        tags:
+            - { name: console.command }
+    mugo.classifier.command.cache_classifier:
+        class: Mugo\ActionAxiomBundle\Command\ClassifierCacheCommand
+        arguments:
+            - '@ezpublish.api.repository'
+            - '@ezpublish.cache_pool'
+        tags:
+            - { name: console.command }
     Mugo\ActionAxiomBundle\Repository\:
         resource: '../../Repository'
         autowire: true

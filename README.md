@@ -57,4 +57,8 @@ Credits:
 
 Portuguese synonym data based on https://github.com/stavarengo/portuguese-brazilian-synonyms
 
-AI Classifiers base lib based on https://github.com/camspiers/statistical-classifier
+AI Classifiers base lib based on https://github.com/camspiers/statistical-classifier (with a few adaptions)
+
+Sample Text Data from Wikipedia
+
+PHP Simple HTML DOM Parser Manual https://simplehtmldom.sourceforge.io/manual.htm (with a few adaptions)

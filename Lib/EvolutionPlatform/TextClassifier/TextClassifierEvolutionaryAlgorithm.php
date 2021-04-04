@@ -20,12 +20,13 @@ class TextClassifierEvolutionaryAlgorithm extends EvolutionaryAlgorithm
     const SVM = 'svm';
     const BAYES = 'bayes';
 
-    function __construct(string $modelName, bool $useStemmer, bool $instrospect, State $initialState, float $crossoverRate, float $mutationRate, int $maxSteps, $maxFitness = null)
+    function __construct(string $modelName, bool $useStemmer, bool $instrospect, State $initialState, float $crossoverRate, float $mutationRate, int $maxSteps, $maxFitness = null, $language = 'por')
     {
         parent::__construct($crossoverRate, $mutationRate, $maxSteps, $maxFitness);
         $this->initialState = $initialState;
         Settings::$documentNormalizer = new Document\None();
-        Settings::$language = $this->language;
+        $this->language = $language;
+        Settings::$language = $language;
         Settings::$modelName = $modelName;
         Settings::$group = $this->group;
         echo "\n\n{$modelName} " . get_class($this->initialState);

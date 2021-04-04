@@ -47,12 +47,12 @@
                     <button class="btn highlightSuperlative">Superlatives</button>
                     <button class="btn highlightUncertainty">Uncertainties</button>
                     <div class="d-none">
-                        <div class="p-3">
-                            Classifier Model: <input type="text" id="classifier_model" value="bayes">
-                            <br>Stemmer <input type="text" id="classifier_stemmer" value="false">
-                        </div>
-                        <button class="btn classifyParagraphs">Classify Paragraphs</button>
+                        Classifier Model: <input type="text" id="classifier_model" value="svm">
+                        <br>Stemmer <input type="text" id="classifier_stemmer" value="true">
                     </div>
+                    <br>
+                    <button class="btn classifyParagraphs">Classify Paragraphs</button>
+                    <br>
                     <button class="btn clearAll">Clear All</button>
                 </div>
                 <div class="mugo_word_synonyms">
@@ -180,7 +180,7 @@
             e.preventDefault();
             e.stopPropagation();
             // checking supported languages
-            if(!['por'].includes(language))
+            if(!['por', 'eng'].includes(language))
             {
                 alert('Not supported for ' + language + ' yet');
                 return;
@@ -206,7 +206,7 @@
             e.preventDefault();
             e.stopPropagation();
             // checking supported languages
-            if(!['por'].includes(language))
+            if(!['por', 'eng'].includes(language))
             {
                 alert('Not supported for ' + language + ' yet');
                 return;
@@ -232,7 +232,7 @@
             e.preventDefault();
             e.stopPropagation();
             // checking supported languages
-            if(![].includes(language))
+            if(!['por', 'eng'].includes(language))
             {
                 alert('Not supported for ' + language + ' yet');
                 return;
@@ -259,33 +259,50 @@
             e.preventDefault();
             e.stopPropagation();
             // checking supported languages
-            if(!['por'].includes(language))
+            if(!['por', 'eng'].includes(language))
             {
                 alert('Not supported for ' + language + ' yet');
                 return;
             }
             $('#' + instanceEditor.name).parent().find('.mugo_word_neutral_analysis .results').html('');
             $('#' + instanceEditor.name).find('p').each(function(){
-                if( language == 'por' )
+                switch(language)
                 {
-                    $('#' + instanceEditor.name).parent().find('.mugo_word_neutral_analysis .results').append(
-                        '<p>' +
-                        $(this).text()
-                            .replace(/&nbsp;/gi, ' ')
-                            // utf8 nbsp
-                            .replace(/ /gi, ' ')
-                            .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(ao|ão|endo|ente|entes)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
-                                '<span class="neutralW">$1$2</span>$3')
-                            .replace(/([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(como)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
-                                ' <span class="neutralW">$2</span>$3')
-                            .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(a|as)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
-                                '<span class="feminineW">$1$2</span>$3')
-                            .replace(/([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(um)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
-                                ' <span class="masculineW">$2</span>$3')
-                            .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(o|os)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
-                                '<span class="masculineW">$1$2</span>$3') +
-                        '</p>'
-                    );
+                    case 'por':
+                        $('#' + instanceEditor.name).parent().find('.mugo_word_neutral_analysis .results').append(
+                            '<p>' +
+                            $(this).text()
+                                .replace(/&nbsp;/gi, ' ')
+                                // utf8 nbsp
+                                .replace(/ /gi, ' ')
+                                .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(ao|ão|endo|ente|entes)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    '<span class="neutralW">$1$2</span>$3')
+                                .replace(/([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(como)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    ' <span class="neutralW">$2</span>$3')
+                                .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(a|as)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    '<span class="feminineW">$1$2</span>$3')
+                                .replace(/([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(um)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    ' <span class="masculineW">$2</span>$3')
+                                .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(o|os)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    '<span class="masculineW">$1$2</span>$3') +
+                            '</p>'
+                        );
+                        break;
+                    case 'eng':
+                        $('#' + instanceEditor.name).parent().find('.mugo_word_neutral_analysis .results').append(
+                            '<p>' +
+                            $(this).text()
+                                .replace(/&nbsp;/gi, ' ')
+                                // utf8 nbsp
+                                .replace(/ /gi, ' ')
+                                .replace(/([^!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ]+)?(she|her|herself|woman|women|girl|girls|female|females)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    '<span class="feminineW">$1$2</span>$3')
+                                .replace(/([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])(he|his|himself|man|men|boy|boys|male|males)([!"#$%&'()*+,-.\/:;=?@\[\]\\^_‘\{|\}~ ])/gi,
+                                    ' <span class="masculineW">$2</span>$3')
+                                +
+                            '</p>'
+                        );
+                        break;
                 }
             });
 
